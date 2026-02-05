@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador Carnet - Los Pinos A.D.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Agency+FB:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Form Section -->
+        <div class="form-section">
+            <h1>Datos del Jugador</h1>
+            
+            <div class="form-group">
+                <label for="photoUpload">Foto del Jugador</label>
+                <input type="file" id="photoUpload" accept="image/*">
+            </div>
+
+            <div class="form-group">
+                <label for="playerName">Nombre del Jugador</label>
+                <input type="text" id="playerName" placeholder="JORGE ARMANDO BENITEZ...">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="teamName">Equipo</label>
+                    <input type="text" id="teamName" value="LA CUADRA">
+                </div>
+                <div class="form-group">
+                    <label for="category">Categoría</label>
+                    <input type="text" id="category" value="ÚNICA">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="documentId">Documento</label>
+                    <input type="text" id="documentId" placeholder="80244344">
+                </div>
+                <div class="form-group">
+                    <label for="bloodType">RH</label>
+                    <input type="text" id="bloodType" placeholder="O+">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="emergencyContact">Contacto Emergencia</label>
+                    <input type="text" id="emergencyContact" placeholder="3208078259">
+                </div>
+                <div class="form-group">
+                    <label for="eps">EPS</label>
+                    <input type="text" id="eps" placeholder="Famisanar">
+                </div>
+            </div>
+
+            <button id="downloadBtn" class="download-btn">Descargar Carnet</button>
+        </div>
+
+        <!-- Preview Section -->
+        <div class="preview-section">
+            <div id="idCard" class="id-card">
+                <!-- Background decorations -->
+                <div class="corner-accents">
+                    <span class="corner top-left"></span>
+                    <span class="corner top-right"></span>
+                    <span class="corner bottom-left"></span>
+                    <span class="corner bottom-right"></span>
+                </div>
+
+                <div class="card-header">
+                    <h2>CAMPEONATO DE BANQUITAS</h2>
+                    <h1>LOS PINOS A.D.</h1>
+                    <div class="green-bar"></div>
+                </div>
+
+                <div class="photo-container">
+                    <div class="photo-frame">
+                        <img id="cardPhoto" src="https://via.placeholder.com/300x350/333333/cccccc?text=FOTO" alt="Foto Jugador">
+                        <div class="photo-corner top-left"></div>
+                        <div class="photo-corner top-right"></div>
+                        <div class="photo-corner bottom-left"></div>
+                        <div class="photo-corner bottom-right"></div>
+                    </div>
+                </div>
+
+                <div class="card-details">
+                    <div class="detail-group">
+                        <label>NOMBRE DEL JUGADOR</label>
+                        <div class="field-box name-box">
+                            <span id="displayPlayerName">JORGE ARMANDO BENITEZ BARC...</span>
+                        </div>
+                    </div>
+
+                    <div class="detail-row">
+                        <div class="detail-group half">
+                            <label>EQUIPO</label>
+                            <div class="field-box">
+                                <span id="displayTeamName">LA CUADRA</span>
+                            </div>
+                        </div>
+                        <div class="detail-group half">
+                            <label>CATEGORÍA</label>
+                            <div class="field-box">
+                                <span id="displayCategory" class="highlight-text">ÚNICA</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detail-row">
+                        <div class="detail-group large-half">
+                            <label>DOCUMENTO</label>
+                            <div class="field-box">
+                                <span id="displayDocumentId">80244344</span>
+                            </div>
+                        </div>
+                        <div class="detail-group small-half">
+                            <label>RH</label>
+                            <div class="field-box">
+                                <span id="displayBloodType" class="highlight-red">O+</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detail-row">
+                        <div class="detail-group half">
+                            <label>CONTACTO EMERGENCIA</label>
+                            <div class="field-box">
+                                <span id="displayEmergencyContact">3208078259</span>
+                            </div>
+                        </div>
+                        <div class="detail-group half no-label-space">
+                            <div class="field-box">
+                                <span id="displayEps">Famisanar</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <div class="dotted-line"></div>
+                    <div class="footer-info">
+                        <p class="org-name">ORGANIZACIÓN: ANDRÉS DUARTE</p>
+                        <p class="season-info">TEMPORADA 2026 - VALIDO HASTA 5TA FECHA</p>
+                        <p class="card-id">ID: JUCWNSB7B</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
