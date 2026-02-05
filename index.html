@@ -1,31 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generador Carnet - Los Pinos A.D.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Agency+FB:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Agency+FB:wght@700&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </head>
+
 <body>
     <div class="app-container">
         <!-- Form Section -->
         <div class="form-section">
             <h1>Datos del Jugador</h1>
-            
-            <div class="form-group">
-                <label for="photoUpload">Foto del Jugador</label>
-                <input type="file" id="photoUpload" accept="image/*">
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="photoUpload">Foto del Jugador</label>
+                    <input type="file" id="photoUpload" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label for="idPhotoUpload">Foto Cédula</label>
+                    <input type="file" id="idPhotoUpload" accept="image/*">
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="playerName">Nombre del Jugador</label>
-                <input type="text" id="playerName" placeholder="JORGE ARMANDO BENITEZ...">
-            </div>
 
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="playerName">Nombres</label>
+                    <input type="text" id="playerName" placeholder="JORGE ARMANDO">
+                </div>
+                <div class="form-group">
+                    <label for="playerLastName">Apellidos</label>
+                    <input type="text" id="playerLastName" placeholder="BENITEZ BARRETO">
+                </div>
+            </div>
             <div class="form-row">
                 <div class="form-group">
                     <label for="teamName">Equipo</label>
@@ -33,7 +49,10 @@
                 </div>
                 <div class="form-group">
                     <label for="category">Categoría</label>
-                    <input type="text" id="category" value="ÚNICA">
+                    <select id="category">
+                        <option value="ÚNICA">ÚNICA</option>
+                        <option value="MASTER">MASTER</option>
+                    </select>
                 </div>
             </div>
 
@@ -50,7 +69,7 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label for="emergencyContact">Contacto Emergencia</label>
+                    <label for="emergencyContact">Número de Contacto</label>
                     <input type="text" id="emergencyContact" placeholder="3208078259">
                 </div>
                 <div class="form-group">
@@ -79,21 +98,45 @@
                     <div class="green-bar"></div>
                 </div>
 
-                <div class="photo-container">
-                    <div class="photo-frame">
-                        <img id="cardPhoto" src="https://via.placeholder.com/300x350/333333/cccccc?text=FOTO" alt="Foto Jugador">
-                        <div class="photo-corner top-left"></div>
-                        <div class="photo-corner top-right"></div>
-                        <div class="photo-corner bottom-left"></div>
-                        <div class="photo-corner bottom-right"></div>
+                <div class="photos-wrapper">
+                    <div class="photo-container player-photo">
+                        <label>JUGADOR</label>
+                        <div class="photo-frame">
+                            <img id="cardPhoto" src="https://via.placeholder.com/300x350/333333/cccccc?text=FOTO"
+                                alt="Foto Jugador">
+                            <div class="photo-corner top-left"></div>
+                            <div class="photo-corner top-right"></div>
+                            <div class="photo-corner bottom-left"></div>
+                            <div class="photo-corner bottom-right"></div>
+                        </div>
+                    </div>
+
+                    <div class="photo-container id-photo">
+                        <label>CÉDULA</label>
+                        <div class="photo-frame landscape">
+                            <img id="cardIdPhoto" src="https://via.placeholder.com/350x200/333333/cccccc?text=CEDULA"
+                                alt="Foto Cédula">
+                            <div class="photo-corner top-left"></div>
+                            <div class="photo-corner top-right"></div>
+                            <div class="photo-corner bottom-left"></div>
+                            <div class="photo-corner bottom-right"></div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="card-details">
-                    <div class="detail-group">
-                        <label>NOMBRE DEL JUGADOR</label>
-                        <div class="field-box name-box">
-                            <span id="displayPlayerName">JORGE ARMANDO BENITEZ BARC...</span>
+                    <div class="detail-row">
+                        <div class="detail-group half">
+                            <label>NOMBRES</label>
+                            <div class="field-box name-box">
+                                <span id="displayPlayerName">JORGE ARMANDO</span>
+                            </div>
+                        </div>
+                        <div class="detail-group half">
+                            <label>APELLIDOS</label>
+                            <div class="field-box name-box">
+                                <span id="displayPlayerLastName">BENITEZ BARRETO</span>
+                            </div>
                         </div>
                     </div>
 
@@ -129,12 +172,13 @@
 
                     <div class="detail-row">
                         <div class="detail-group half">
-                            <label>CONTACTO EMERGENCIA</label>
+                            <label>NÚMERO DE CONTACTO</label>
                             <div class="field-box">
                                 <span id="displayEmergencyContact">3208078259</span>
                             </div>
                         </div>
-                        <div class="detail-group half no-label-space">
+                        <div class="detail-group half">
+                            <label>EPS</label>
                             <div class="field-box">
                                 <span id="displayEps">Famisanar</span>
                             </div>
@@ -146,7 +190,7 @@
                     <div class="dotted-line"></div>
                     <div class="footer-info">
                         <p class="org-name">ORGANIZACIÓN: ANDRÉS DUARTE</p>
-                        <p class="season-info">TEMPORADA 2026 - VALIDO HASTA 5TA FECHA</p>
+                        <p class="season-info">TEMPORADA 2026 - VALIDO HASTA ENERO DEL 2027</p>
                         <p class="card-id">ID: JUCWNSB7B</p>
                     </div>
                 </div>
@@ -155,4 +199,5 @@
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>

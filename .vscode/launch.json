@@ -1,0 +1,11 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Football ID Card",
+            "type": "chrome",
+            "request": "launch",
+            "file": "c:\\Users\\JorgeArmandoBenitezB\\.gemini\\antigravity\\scratch\\football_id_card\\index.html"
+        }
+    ]
+}

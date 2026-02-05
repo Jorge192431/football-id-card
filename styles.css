@@ -1,16 +1,21 @@
 :root {
-    --bg-color: #0a0a0a;
-    --card-bg: #050505;
-    --neon-green: #39FF14;
-    --dark-green: #0a2e0a;
-    --text-white: #ffffff;
-    --text-gray: #888888;
-    --input-bg: #1a1a1a;
-    --input-border: #333333;
-    --field-bg: #0f1215;
-    --field-border: #1a2f26;
-    --highlight-yellow: #ffcc00;
-    --highlight-red: #ff4444;
+    --bg-color: #0d0202;
+    /* Dark reddish black */
+    --card-bg: #0a0101;
+    --neon-green: #ff4d4d;
+    /* Softer Neon Red */
+    --neon-accent: #ff9900;
+    /* Orange/Gold Accent */
+    --dark-green: #33000a;
+    --text-white: #ffecec;
+    --text-gray: #b08c8c;
+    --input-bg: #2a0d0d;
+    --input-border: #521e1e;
+    --field-bg: #200a0a;
+    --field-border: #521c1c;
+    --highlight-yellow: #ffdd00;
+    --highlight-red: #ffffff;
+    /* White for contrast */
 }
 
 * {
@@ -46,7 +51,7 @@ body {
     background: #151515;
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     height: fit-content;
 }
 
@@ -75,7 +80,8 @@ label {
     font-weight: bold;
 }
 
-input {
+input,
+select {
     width: 100%;
     padding: 12px;
     background: var(--input-bg);
@@ -86,7 +92,8 @@ input {
     transition: all 0.3s;
 }
 
-input:focus {
+input:focus,
+select:focus {
     border-color: var(--neon-green);
     outline: none;
     box-shadow: 0 0 5px rgba(57, 255, 20, 0.3);
@@ -121,12 +128,22 @@ input:focus {
 .id-card {
     width: 400px;
     height: 700px;
-    background: linear-gradient(135deg, #001a00 0%, #000000 100%);
+    background-color: #080101;
+    background-image:
+        /* Radial glow from top-left */
+        radial-gradient(circle at 0% 0%, rgba(255, 77, 77, 0.15) 0%, transparent 50%),
+        /* Radial glow from bottom-right */
+        radial-gradient(circle at 100% 100%, rgba(255, 150, 0, 0.1) 0%, transparent 50%),
+        /* Diagonal lines pattern */
+        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.03) 0px, rgba(255, 255, 255, 0.03) 1px, transparent 1px, transparent 10px),
+        /* Dots pattern */
+        radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 20px 20px, 20px 20px;
     border-radius: 20px;
     position: relative;
     padding: 30px;
     overflow: hidden;
-    box-shadow: 0 0 30px rgba(57, 255, 20, 0.1);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(255, 77, 77, 0.1);
     display: flex;
     flex-direction: column;
 }
@@ -141,10 +158,33 @@ input:focus {
     border-width: 0;
 }
 
-.top-left { top: 15px; left: 15px; border-top-width: 2px; border-left-width: 2px; }
-.top-right { top: 15px; right: 15px; border-top-width: 2px; border-right-width: 2px; }
-.bottom-left { bottom: 15px; left: 15px; border-bottom-width: 2px; border-left-width: 2px; }
-.bottom-right { bottom: 15px; right: 15px; border-bottom-width: 2px; border-right-width: 2px; }
+.top-left {
+    top: 15px;
+    left: 15px;
+    border-top-width: 2px;
+    border-left-width: 2px;
+}
+
+.top-right {
+    top: 15px;
+    right: 15px;
+    border-top-width: 2px;
+    border-right-width: 2px;
+}
+
+.bottom-left {
+    bottom: 15px;
+    left: 15px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+}
+
+.bottom-right {
+    bottom: 15px;
+    right: 15px;
+    border-bottom-width: 2px;
+    border-right-width: 2px;
+}
 
 /* Header */
 .card-header {
@@ -178,45 +218,95 @@ input:focus {
     box-shadow: 0 0 10px var(--neon-green);
 }
 
-/* Photo */
-.photo-container {
+/* Photos Layout */
+.photos-wrapper {
     display: flex;
     justify-content: center;
-    margin-bottom: 25px;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: flex-end;
+}
+
+.photo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.photo-container label {
+    font-size: 0.7rem;
+    margin-bottom: 4px;
+    color: var(--text-gray);
+    letter-spacing: 1px;
 }
 
 .photo-frame {
-    width: 140px;
-    height: 160px;
+    width: 120px;
+    height: 140px;
     position: relative;
-    padding: 5px;
-    /* Soft glow around photo */
-    box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
-    border-radius: 10px;
+    padding: 4px;
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.15);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.photo-frame.landscape {
+    width: 140px;
+    height: 90px;
+    /* Cédula Aspect Ratio approx */
+    margin-bottom: 0;
 }
 
 .photo-frame img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 6px;
     border: 1px solid #333;
 }
 
 /* Specific rounded corners for photo frame decoration */
 .photo-corner {
     position: absolute;
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     border-color: var(--neon-green);
     border-style: solid;
     border-width: 0;
-    border-radius: 2px;
+    border-radius: 1px;
 }
-.photo-frame .top-left { top: -2px; left: -2px; border-top-width: 2px; border-left-width: 2px; border-top-left-radius: 8px; }
-.photo-frame .top-right { top: -2px; right: -2px; border-top-width: 2px; border-right-width: 2px; border-top-right-radius: 8px; }
-.photo-frame .bottom-left { bottom: -2px; left: -2px; border-bottom-width: 2px; border-left-width: 2px; border-bottom-left-radius: 8px; }
-.photo-frame .bottom-right { bottom: -2px; right: -2px; border-bottom-width: 2px; border-right-width: 2px; border-bottom-right-radius: 8px; }
+
+.photo-frame .top-left {
+    top: -1px;
+    left: -1px;
+    border-top-width: 2px;
+    border-left-width: 2px;
+    border-top-left-radius: 6px;
+}
+
+.photo-frame .top-right {
+    top: -1px;
+    right: -1px;
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-top-right-radius: 6px;
+}
+
+.photo-frame .bottom-left {
+    bottom: -1px;
+    left: -1px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-bottom-left-radius: 6px;
+}
+
+.photo-frame .bottom-right {
+    bottom: -1px;
+    right: -1px;
+    border-bottom-width: 2px;
+    border-right-width: 2px;
+    border-bottom-right-radius: 6px;
+}
 
 
 /* Details */
@@ -247,40 +337,65 @@ input:focus {
 .field-box span {
     color: white;
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 0.85rem;
     display: block;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
+    /* Allow wrapping */
+    word-wrap: break-word;
+    line-height: 1.1;
     text-transform: uppercase;
 }
 
 .name-box span {
-    font-size: 1.4rem;
+    font-size: 1rem;
     text-align: center;
 }
 
 .detail-row {
     display: flex;
     gap: 15px;
-    align-items: flex-end; /* Align boxes bottom */
+    align-items: flex-end;
+    /* Align boxes bottom */
 }
 
-.detail-group.half { flex: 1; }
-.detail-group.large-half { flex: 1.5; }
-.detail-group.small-half { flex: 0.5; }
+.detail-group.half {
+    flex: 1;
+}
+
+.detail-group.large-half {
+    flex: 1.5;
+}
+
+.detail-group.small-half {
+    flex: 0.5;
+}
 
 .no-label-space {
-    padding-top: 16px; /* Compensate for missing label visually if needed, though grid better */
+    padding-top: 16px;
+    /* Compensate for missing label visually if needed, though grid better */
     margin-top: auto;
 }
 
 /* Text Highlights */
-.highlight-text { color: var(--highlight-yellow) !important; text-align: center; }
-.highlight-red { color: var(--highlight-red) !important; text-align: center; }
+.highlight-text {
+    color: var(--highlight-yellow) !important;
+    text-align: center;
+}
 
-#displayTeamName, #displayDocumentId, #displayCategory { text-align: center; }
-#displayBloodType { font-size: 1.2rem; }
+.highlight-red {
+    color: var(--highlight-red) !important;
+    text-align: center;
+}
+
+#displayTeamName,
+#displayDocumentId,
+#displayCategory {
+    text-align: center;
+}
+
+#displayBloodType {
+    font-size: 1.2rem;
+}
 
 /* Footer */
 .card-footer {
@@ -302,5 +417,12 @@ input:focus {
     font-weight: 500;
 }
 
-.footer-info .org-name { color: var(--neon-green); }
-.footer-info .card-id { color: #444; margin-top: 5px; font-family: monospace; }
+.footer-info .org-name {
+    color: var(--neon-green);
+}
+
+.footer-info .card-id {
+    color: #444;
+    margin-top: 5px;
+    font-family: monospace;
+}

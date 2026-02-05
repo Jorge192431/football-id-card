@@ -1,6 +1,7 @@
 // Map inputs to display elements
 const fields = [
     { input: 'playerName', display: 'displayPlayerName' },
+    { input: 'playerLastName', display: 'displayPlayerLastName' },
     { input: 'teamName', display: 'displayTeamName' },
     { input: 'category', display: 'displayCategory' },
     { input: 'documentId', display: 'displayDocumentId' },
@@ -41,6 +42,23 @@ photoInput.addEventListener('change', function (e) {
         reader.readAsDataURL(file);
     }
 });
+
+// ID Photo upload handling
+const idPhotoInput = document.getElementById('idPhotoUpload');
+const cardIdPhoto = document.getElementById('cardIdPhoto');
+
+idPhotoInput.addEventListener('change', function (e) {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            cardIdPhoto.src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+    }
+});
+
+
 
 // Download functionality
 document.getElementById('downloadBtn').addEventListener('click', () => {
