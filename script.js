@@ -19,8 +19,7 @@ fields.forEach(field => {
         inputEl.addEventListener('input', (e) => {
             // Default text if empty
             if (e.target.value.trim() === '') {
-                // Restore placeholder default if needed or just leave empty
-                // displayEl.textContent = '...'; 
+                displayEl.textContent = '';
             } else {
                 displayEl.textContent = e.target.value;
             }
