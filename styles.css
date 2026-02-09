@@ -454,3 +454,8 @@ select:focus {
     margin-top: 5px;
     font-family: monospace;
 }
+
+.footer-info .creator-credit {
+    color: red;
+    text-decoration: underline;
+}
